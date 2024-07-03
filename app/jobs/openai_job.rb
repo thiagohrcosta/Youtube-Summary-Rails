@@ -4,8 +4,7 @@ class OpenaiJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    # Do something later
-    binding.pry
+    @video_content = VideoContent.find(args[0])
     transcription = args[1]
 
     client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_ACCESS_TOKEN"))
@@ -23,7 +22,6 @@ class OpenaiJob < ApplicationJob
 
     new_content = chaptgpt_response["choices"][0]["message"]["content"]
     binding.pry
-
-    puts new_content
+    @video_content.update(content: new_content)
   end
 end

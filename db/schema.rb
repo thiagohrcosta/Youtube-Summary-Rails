@@ -29,8 +29,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_02_235901) do
 
   create_table "video_contents", force: :cascade do |t|
     t.string "title", null: false
-    t.string "cover", null: false
-    t.text "content", null: false
+    t.string "cover"
+    t.text "content"
     t.string "url", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
