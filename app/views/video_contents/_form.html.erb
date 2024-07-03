@@ -1,5 +1,6 @@
 <%= simple_form_for @video_content do |f| %>
   <%= f.input :title %>
   <%= f.input :url %>
+  <%= f.input :transcription_file, as: :file %>
   <%= f.submit %>
 <% end %>
