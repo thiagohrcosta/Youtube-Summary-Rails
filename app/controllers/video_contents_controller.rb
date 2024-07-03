@@ -1,6 +1,17 @@
 class VideoContentsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
+  def index
+    @videos = VideoContent.all.map do |video|
+      video_id = extract_youtube_id(video.url)
+      {
+        id: video_id,
+        title: video.title,
+        content: video.content
+      }
+    end
+  end
+
   def new
     @video_content = VideoContent.new
   end
@@ -25,6 +36,12 @@ class VideoContentsController < ApplicationController
   end
 
   private
+
+  def extract_youtube_id(url)
+    regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/
+    match = url.match(regex)
+    match[1] if match
+  end
 
   def set_video_content
     @video_content = VideoContent.find(params[:id])

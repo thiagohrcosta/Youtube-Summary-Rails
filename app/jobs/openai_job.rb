@@ -14,14 +14,16 @@ class OpenaiJob < ApplicationJob
       messages: [
         { 
           role: "user", 
-          content: "Given the #{transcription} you will be a helpful assistant that will summarize the transcription to higlight the key point of the youtube video transcription."
+          content: "Summarize the given #{transcription}, highlighting the key points of the YouTube video. 
+          The summary must be in English, even if the transcription is in another language. 
+          Create an engaging and captivating summary suitable for a website or magazine, without using phrases like 
+          'the key point of this transcription' or referencing the transcription itself. 
+          Focus on drawing the user's attention to the content of the video."
         }
       ]
     })
-    binding.pry
 
     new_content = chaptgpt_response["choices"][0]["message"]["content"]
-    binding.pry
     @video_content.update(content: new_content)
   end
 end
