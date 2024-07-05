@@ -14,11 +14,31 @@
  *= require_self
  */
 
+ .navbar .logo p {
+  color: #D90368;
+  font-weight: bold;
+  font-size: 32px;
+  text-transform: uppercase;
+ }
+
 .index-videos {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
   margin: 10px;
+}
+
+.btn-login {
+  text-decoration: none;
+  color: #F0F3F5;
+  background-color: #D90368;
+  border-radius: 8px;
+  padding: 10px 25px;
+}
+
+.btn-login:hover {
+  color: #F0F3F5;
+  opacity: 0.9;
 }
 
 .home-videos-container {
