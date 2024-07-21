@@ -1,5 +1,6 @@
 class VideoContentsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  before_action :set_video_content, only: [:show]
 
   def index
     @videos = VideoContent.all.map do |video|
@@ -10,6 +11,16 @@ class VideoContentsController < ApplicationController
         content: video.content
       }
     end
+  end
+
+  def show
+    video_id = extract_youtube_id(@video_content.url)
+    @video_content = {
+      id: @video_content.id,
+      video_id: video_id,
+      title: @video_content.title,
+      content: @video_content.content
+    }
   end
 
   def new
