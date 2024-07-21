@@ -14,6 +14,11 @@
  *= require_self
  */
 
+ 
+ h1 {
+  color: #D90368
+ }
+
  .navbar .logo p {
   color: #D90368;
   font-weight: bold;
@@ -79,4 +84,13 @@
   font-size: 1em;
   color: #666;
   padding: 0 10px 15px;
+}
+
+.btn-submit {
+  width: 100%;
+  color: #F0F3F5;
+  background-color: #D90368;
+  border-radius: 8px;
+  padding: 10px 25px;
+  border: none;
 }

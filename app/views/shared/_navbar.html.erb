@@ -1,12 +1,14 @@
-<div class="navbar">
-  <div class="logo">
-    <p>YOUTUBE SUMMARY GENERATOR</p>
-  </div>
-  <div>
-    <% if current_user.present? %>
-      <p><%= current_user.email %></p>
-    <% else %>
-      <%= link_to "LOGIN", new_user_session_path, class: "btn-login" %>
-    <% end %>
+<div class="container">
+  <div class="navbar">
+    <div class="logo">
+      <p>YOUTUBE SUMMARY GENERATOR</p>
+    </div>
+    <div>
+      <% if current_user.present? %>
+        <p><%= current_user.email %></p>
+      <% else %>
+        <%= link_to "LOGIN", new_user_session_path, class: "btn-login" %>
+      <% end %>
+    </div>
   </div>
 </div>
